@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <title>BTech Toolkit Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>⚡ BTech Toolkit</h1>
+        <p>Engineering Student Productivity Suite</p>
+    </div>
+
+    <button id="themeBtn" class="theme-btn">🌙</button>
+</header>
+
+<nav class="nav">
+    <button class="nav-btn active" data-page="calculator">🧮 Calculator</button>
+    <button class="nav-btn" data-page="formulas">📚 Formulas</button>
+    <button class="nav-btn" data-page="cgpa">🎓 CGPA</button>
+    <button class="nav-btn" data-page="attendance">⏰ Attendance</button>
+    <button class="nav-btn" data-page="planner">📅 Planner</button>
+</nav>
+
+<main>
+
+<!-- ================= CALCULATOR ================= -->
+
+<section id="calculator" class="page active">
+
+    <div class="section-title">
+        <h2>Scientific Calculator</h2>
+        <span class="badge">DEG</span>
+    </div>
+
+    <div class="calculator">
+
+        <div class="display-box">
+            <div id="historyDisplay"></div>
+            <input
+                id="display"
+                type="text"
+                inputmode="none"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="0"
+                readonly
+            >
+        </div>
+
+        <div class="calc-tools">
+            <button id="angleBtn">DEG</button>
+            <button data-value="(">(</button>
+            <button data-value=")">)</button>
+            <button data-action="backspace">⌫</button>
+            <button class="danger" data-action="clear">AC</button>
+        </div>
+
+        <div class="calc-grid">
+
+            <button data-value="sin(">sin</button>
+            <button data-value="cos(">cos</button>
+            <button data-value="tan(">tan</button>
+            <button data-value="log(">log</button>
+            <button data-value="ln(">ln</button>
+
+            <button data-value="asin(">sin⁻¹</button>
+            <button data-value="acos(">cos⁻¹</button>
+            <button data-value="atan(">tan⁻¹</button>
+            <button data-value="sqrt(">√</button>
+            <button data-value="^2">x²</button>
+
+            <button data-value="^">xʸ</button>
+            <button data-value="π">π</button>
+            <button data-value="e">e</button>
+            <button data-value="!">x!</button>
+            <button data-value="%">%</button>
+
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button data-value="/">÷</button>
+            <button data-value="1/">1/x</button>
+
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button data-value="*">×</button>
+            <button data-value="-">−</button>
+
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button data-value="+">+</button>
+            <button data-value=".">.</button>
+
+            <button data-value="0" class="zero">0</button>
+            <button data-action="ans">ANS</button>
+            <button data-action="equals" class="equals">=</button>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FORMULAS ================= -->
+
+<section id="formulas" class="page">
+
+    <div class="section-title">
+        <h2>Engineering Formula Library</h2>
+    </div>
+
+    <input
+        id="formulaSearch"
+        class="search"
+        type="search"
+        placeholder="Search voltage, current, power, transformer..."
+    >
+
+    <div class="category-buttons">
+        <button class="formula-filter active" data-category="all">All</button>
+        <button class="formula-filter" data-category="electrical">Electrical</button>
+        <button class="formula-filter" data-category="ac">AC</button>
+        <button class="formula-filter" data-category="machines">Machines</button>
+        <button class="formula-filter" data-category="electronics">Electronics</button>
+        <button class="formula-filter" data-category="math">Math</button>
+    </div>
+
+    <div id="formulaContainer" class="formula-grid"></div>
+
+</section>
+
+
+<!-- ================= CGPA ================= -->
+
+<section id="cgpa" class="page">
+
+    <div class="section-title">
+        <h2>CGPA Calculator</h2>
+    </div>
+
+    <div class="card">
+
+        <div class="input-row">
+            <div>
+                <label>Semester</label>
+                <input id="semName" type="text" placeholder="Semester 1">
+            </div>
+
+            <div>
+                <label>SGPA</label>
+                <input id="sgpa" type="number" min="0" max="10" step="0.01">
+            </div>
+
+            <div>
+                <label>Credits</label>
+                <input id="credits" type="number" min="1">
+            </div>
+        </div>
+
+        <button id="addSem" class="primary-btn">+ Add Semester</button>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>SGPA</th>
+                        <th>Credits</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="semTable"></tbody>
+            </table>
+        </div>
+
+        <div class="result-box">
+            <span>Current CGPA</span>
+            <strong id="cgpaResult">0.00</strong>
+        </div>
+
+        <button id="clearCgpa" class="secondary-btn">Clear All</button>
+
+    </div>
+</section>
+
+
+<!-- ================= ATTENDANCE ================= -->
+
+<section id="attendance" class="page">
+
+    <div class="section-title">
+        <h2>Attendance Calculator</h2>
+    </div>
+
+    <div class="card">
+
+        <div class="input-row two">
+
+            <div>
+                <label>Total Classes Conducted</label>
+                <input id="totalClasses" type="number" min="0">
+            </div>
+
+            <div>
+                <label>Classes Attended</label>
+                <input id="attendedClasses" type="number" min="0">
+            </div>
+
+        </div>
+
+        <div class="input-row two">
+
+            <div>
+                <label>Required Attendance %</label>
+                <input id="requiredAttendance" type="number" value="75" min="0" max="100">
+            </div>
+
+            <div>
+                <label>Future Classes</label>
+                <input id="futureClasses" type="number" min="0" value="0">
+            </div>
+
+        </div>
+
+        <button id="calculateAttendance" class="primary-btn">
+            Calculate
+        </button>
+
+        <div class="attendance-result">
+            <div>
+                <span>Current Attendance</span>
+                <strong id="attendancePercent">0%</strong>
+            </div>
+
+            <div>
+                <span>Extra Classes Needed</span>
+                <strong id="classesNeeded">0</strong>
+            </div>
+
+            <div>
+                <span>Can You Reach Target?</span>
+                <strong id="attendanceStatus">—</strong>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= PLANNER ================= -->
+
+<section id="planner" class="page">
+
+    <div class="section-title">
+        <h2>Study Planner</h2>
+    </div>
+
+    <div class="card">
+
+        <div class="planner-form">
+
+            <input
+                id="taskInput"
+                type="text"
+                placeholder="Enter study task..."
+            >
+
+            <select id="subjectInput">
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Programming">Programming</option>
+                <option value="GATE">GATE</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input id="dateInput" type="date">
+
+            <input
+                id="durationInput"
+                type="number"
+                min="1"
+                placeholder="Minutes"
+            >
+
+            <button id="addTask" class="primary-btn">
+                Add Task
+            </button>
+
+        </div>
+
+        <div class="progress-area">
+            <div class="progress-info">
+                <span>Today's Progress</span>
+                <strong id="progressText">0%</strong>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+
+        <button id="clearTasks" class="secondary-btn">
+            Clear Completed
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>⚡ BTech Toolkit Pro</p>
+    <small>Built for Engineering Students</small>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
